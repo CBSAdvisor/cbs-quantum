@@ -39,6 +39,7 @@
             this._btnRun.TabIndex = 0;
             this._btnRun.Text = "Run";
             this._btnRun.UseVisualStyleBackColor = true;
+            this._btnRun.Click += new System.EventHandler(this._btnRun_Click);
             // 
             // MainForm
             // 
@@ -48,6 +49,7 @@
             this.Controls.Add(this._btnRun);
             this.Name = "MainForm";
             this.Text = "Hidden start minerd";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }

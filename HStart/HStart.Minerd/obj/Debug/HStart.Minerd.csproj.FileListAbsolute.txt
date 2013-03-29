@@ -6,3 +6,4 @@ D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.exe
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.pdb
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.MainForm.resources
+D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.csprojResolveAssemblyReference.cache

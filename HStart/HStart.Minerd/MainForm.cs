@@ -28,7 +28,9 @@ namespace HStart.Minerd
             ProcessStartInfo procInfo = new ProcessStartInfo();
 
             procInfo.CreateNoWindow = true;
-            procInfo.UseShellExecute = true;
+            procInfo.UseShellExecute = false;
+            procInfo.RedirectStandardOutput = true;
+            procInfo.RedirectStandardError = true;
             procInfo.FileName = "minerd.exe";
             procInfo.WindowStyle = ProcessWindowStyle.Hidden;
             procInfo.Arguments = @"-q --userpass=Cameleer.3:helicopter --proxy=192.168.21.1:3128 --url=http://coinotron.com:8322 --algo=scrypt --threads=8 --scantime=6 --retry-pause=10";
@@ -46,9 +48,13 @@ namespace HStart.Minerd
                     _minerdProcess.EnableRaisingEvents = true;
                     _minerdProcess.StartInfo = _minerdProcInfo;
                     _minerdProcess.Exited += _minerdProcess_Exited;
-
+                    _minerdProcess.OutputDataReceived += new DataReceivedEventHandler(_minerdProcess_OutputDataReceived);
+                    
                     _btnRun.Text = "Stop";
+                    _lblProcOutput.Text = string.Empty;
+
                     _minerdProcess.Start();
+                    _minerdProcess.BeginOutputReadLine();
                 }
                 else
                 {
@@ -61,7 +67,16 @@ namespace HStart.Minerd
             }
         }
 
-        void _minerdProcess_Exited(object sender, EventArgs e)
+        private void _minerdProcess_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            this.Invoke(new MethodInvoker(
+                delegate
+                {
+                    _lblProcOutput.Text = e.Data;
+                }));
+        }
+
+        private void _minerdProcess_Exited(object sender, EventArgs e)
         {
             this.Invoke(new MethodInvoker(
                 delegate

@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this._btnRun = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // _btnRun
+            // 
+            this._btnRun.Location = new System.Drawing.Point(360, 139);
+            this._btnRun.Name = "_btnRun";
+            this._btnRun.Size = new System.Drawing.Size(75, 23);
+            this._btnRun.TabIndex = 0;
+            this._btnRun.Text = "Run";
+            this._btnRun.UseVisualStyleBackColor = true;
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(447, 174);
+            this.Controls.Add(this._btnRun);
+            this.Name = "MainForm";
+            this.Text = "Hidden start minerd";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button _btnRun;
     }
 }
 

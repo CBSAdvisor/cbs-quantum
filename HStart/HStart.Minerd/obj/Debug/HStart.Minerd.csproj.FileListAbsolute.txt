@@ -1,8 +1,8 @@
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\bin\Debug\HStart.Minerd.exe.config
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\bin\Debug\HStart.Minerd.exe
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\bin\Debug\HStart.Minerd.pdb
-D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.csprojResolveAssemblyReference.cache
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.Properties.Resources.resources
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.csproj.GenerateResource.Cache
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.exe
 D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.pdb
+D:\Projects\github-repo\cbs-quantum\HStart\HStart.Minerd\obj\Debug\HStart.Minerd.MainForm.resources

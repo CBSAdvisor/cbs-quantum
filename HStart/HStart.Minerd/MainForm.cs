@@ -33,7 +33,8 @@ namespace HStart.Minerd
             procInfo.RedirectStandardError = true;
             procInfo.FileName = "minerd.exe";
             procInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            procInfo.Arguments = @"-q --userpass=Cameleer.3:helicopter --proxy=192.168.21.1:3128 --url=http://coinotron.com:8322 --algo=scrypt --threads=8 --scantime=6 --retry-pause=10";
+            //procInfo.Arguments = @"-q --userpass=Cameleer.3:helicopter --proxy=192.168.21.1:3128 --url=http://coinotron.com:8322 --algo=scrypt --threads=8 --scantime=6 --retry-pause=10";
+            procInfo.Arguments = @"-q --userpass=Cameleer.1:helicopter --url=http://coinotron.com:8322 --algo=scrypt --threads=2 --scantime=6 --retry-pause=10";
 
             return procInfo;
         }

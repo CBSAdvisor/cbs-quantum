@@ -1,0 +1,1435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F8E3B87-8B6A-4986-94D6-EA8B66940F2D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VfSpeaker</RootNamespace>
+    <AssemblyName>VfSpeaker</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>VolumeNormal.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\ScrapySharp.1.5\lib\net40\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ScrapySharp.1.5\lib\net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio">
+      <HintPath>..\packages\NAudio.1.6\lib\net20\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ScrapySharp.1.5\lib\net40\ScrapySharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ScrapySharp.1.5\lib\net40\ScrapySharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2012.3.1017.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Desert, Version=2012.3.1017.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Office2010Black, Version=2012.3.1017.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2012.3.1017.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2012.3.1017.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddTextInfo.cs" />
+    <Compile Include="Extentions\Extentions.cs" />
+    <Compile Include="IProgressCallback.cs" />
+    <Compile Include="Log4.cs" />
+    <Compile Include="NewDocumentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewDocumentForm.Designer.cs">
+      <DependentUpon>NewDocumentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\VfWebClienBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\VfWebServer.cs" />
+    <Compile Include="TextToSpeechInfo.cs" />
+    <Compile Include="Views\VfDocumentEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\VfDocumentEditView.Designer.cs">
+      <DependentUpon>VfDocumentEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VfDocumentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\VfDocumentView.Designer.cs">
+      <DependentUpon>VfDocumentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VfApplication.cs" />
+    <Compile Include="Views\VfPartsListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\VfPartsListView.Designer.cs">
+      <DependentUpon>VfPartsListView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="NewDocumentForm.resx">
+      <DependentUpon>NewDocumentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\VfDocumentEditView.resx">
+      <DependentUpon>VfDocumentEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\VfDocumentView.resx">
+      <DependentUpon>VfDocumentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\VfPartsListView.resx">
+      <DependentUpon>VfPartsListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\VfSpeaker.Data.Models.IVfDocumentModel.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VfSpeaker.Data\VfSpeaker.Data.csproj">
+      <Project>{db0be5b1-5c83-47df-9900-bfa794599983}</Project>
+      <Name>VfSpeaker.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\ballgreen.png" />
+    <Content Include="Images\Button-exit-icon-16.png" />
+    <Content Include="Images\Button-exit-icon-24.png" />
+    <Content Include="Images\Button-exit-icon-32.png" />
+    <Content Include="Images\button_cancel.png" />
+    <Content Include="Images\button_ok.png" />
+    <Content Include="Images\cancel.png" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\addressbook\gif\addressbook-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\addressbook\gif\adressbook-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\addressbook\gif\adressbook-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\addressbook\gif\adressbook-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\add\gif\add-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\add\gif\add-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\add\gif\add-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\add\gif\add-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\applications\gif\applications-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\applications\gif\applications-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\applications\gif\applications-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\applications\gif\applications-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\backward\gif\backward-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\backward\gif\backward-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\backward\gif\backward-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\backward\gif\backward-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballblue\gif\ball-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballblue\gif\ball-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballblue\gif\ball-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballblue\gif\ballblue-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballgreen\gif\ball-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballgreen\gif\ball-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballgreen\gif\ball-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballgreen\gif\ballgreen-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballorange\gif\ballorange-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballorange\gif\ballorange-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballorange\gif\ballorange-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballorange\gif\ballorange-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballred\gif\ball-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballred\gif\ball-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballred\gif\ball-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ballred\gif\ballred-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ball\gif\ball-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ball\gif\ball-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ball\gif\ball-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ball\gif\ball-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\book\gif\ball-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\book\gif\ball-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\book\gif\ball-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\book\gif\book-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\bubbleblue\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\bubbleblue\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\bubbleblue\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\bubbleblue\gif\bublleblue-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\bubblegreen\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\bubblegreen\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\bubblegreen\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\bubblegreen\gif\bubllegreen-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\burn\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\burn\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\burn\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\burn\gif\burn-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calculator\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calculator\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calculator\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calculator\gif\calculator-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calendarorange\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calendarorange\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calendarorange\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calendarorange\gif\clendarorange-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calendar\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calendar\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calendar\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\calendar\gif\clendar-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cancel\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cancel\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cancel\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cancel\gif\cancel-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\card\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\card\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\card\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\card\gif\card-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdgreen\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdgreen\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdgreen\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdgreen\gif\cdgreen-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdred\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdred\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdred\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdred\gif\cdred-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdyellow\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdyellow\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdyellow\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cdyellow\gif\cdyellow-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cd\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cd\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cd\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cd\gif\cd-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\chart2\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\chart2\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\chart2\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\chart2\gif\chart-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\chartround\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\chartround\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\chartround\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\chartround\gif\chartround-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\checkmark\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\checkmark\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\checkmark\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\checkmark\gif\checkmark-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\clipboard\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\clipboard\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\clipboard\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\clipboard\gif\clipboard-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\clock\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\clock\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\clock\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\clock\gif\clock-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\close\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\close\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\close\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\close\gif\close-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cmd2\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cmd2\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cmd2\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cmd2\gif\cmd2-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\connect\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\connect\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\connect\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\connect\gif\connect-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\copy\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\copy\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\copy\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\copy\gif\copy-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cut\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cut\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cut\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\cut\gif\cut-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\database\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\database\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\database\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\database\gif\database-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\delete\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\delete\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\delete\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\delete\gif\delete-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\desktop\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\desktop\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\desktop\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\desktop\gif\desktop-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documentadd\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documentadd\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documentadd\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documentadd\gif\documentadd-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documentremove\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documentremove\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documentremove\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documentremove\gif\documentremove-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documents\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documents\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documents\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\documents\gif\documents-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\document\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\document\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\document\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\document\gif\document-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\dollar\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\dollar\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\dollar\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\dollar\gif\dollar-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\down\gif\down-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\down\gif\down-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\down\gif\down-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\down\gif\down-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\edit\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\edit\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\edit\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\edit\gif\edit-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\euro\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\euro\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\euro\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\euro\gif\euro-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\export\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\export\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\export\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\export\gif\export-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favouritesadd\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favouritesadd\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favouritesadd\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favouritesadd\gif\favouritesadd-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favouritesremove\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favouritesremove\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favouritesremove\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favouritesremove\gif\favouritesremove-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favourites\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favourites\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favourites\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\favourites\gif\favourites-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\firstaid\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\firstaid\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\firstaid\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\firstaid\gif\firstaid-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folderadd\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folderadd\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folderadd\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folderadd\gif\folderadd-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folderremove\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folderremove\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folderremove\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folderremove\gif\folderremove-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folder\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folder\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folder\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\folder\gif\folder-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\font\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\font\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\font\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\font\gif\font-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\forward\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\forward\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\forward\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\forward\gif\forward-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\globe2\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\globe2\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\globe2\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\globe2\gif\globe2-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\globe\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\globe\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\globe\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\globe\gif\globe-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddikdownload\gf\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddikdownload\gf\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddikdownload\gf\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddikdownload\gf\harddidkdown-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddiskupload\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddiskupload\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddiskupload\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddiskupload\gif\harddiskupload-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddisk\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddisk\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddisk\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\harddisk\gif\harddisk-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\helpround\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\helpround\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\helpround\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\helpround\gif\help2-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\help\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\help\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\help\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\help\gif\help-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\homered\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\homered\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\homered\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\homered\gif\homered-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\home\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\home\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\home\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\home\gif\home-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\images\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\images\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\images\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\images\gif\images-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\image\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\image\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\image\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\image\gif\image-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\import\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\import\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\import\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\import\gif\import-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\info\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\info\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\info\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\info\gif\info-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\junkfull\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\junkfull\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\junkfull\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\junkfull\gif\junkfull-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\junk\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\junk\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\junk\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\junk\gif\junk-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\leftdown\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\leftdown\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\leftdown\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\leftdown\gif\leftdown-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\leftup\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\leftup\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\leftup\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\leftup\gif\leftup-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\left\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\left\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\left\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\left\gif\left-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\lock\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\lock\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\lock\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\lock\gif\lock-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\mail\gf\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\mail\gf\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\mail\gf\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\mail\gf\mail-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\mail\io\mail.ico" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\network\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\network\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\network\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\network\gif\network-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\network\ivo\net.ico" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\news\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\news\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\news\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\news\gif\news-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\next\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\next\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\next\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\next\gif\next-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\notepad\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\notepad\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\notepad\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\notepad\gif\notepad-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ok\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ok\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ok\gif\483.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ok\gif\ok-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\options\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\options\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\options\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\options\gif\options-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\paste\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\paste\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\paste\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\paste\gif\paste-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pause\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pause\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pause\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pause\gif\pause-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pencils\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pencils\gif\24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pencils\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pencils\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pen\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pen\gif\24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pen\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\pen\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\play\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\play\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\play\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\play\gif\play-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preferences\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preferences\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preferences\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preferences\gif\prefes-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preference\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preference\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preference\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preference\gif\prefe-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preview\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preview\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preview\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\preview\gif\image-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\previous\gf\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\previous\gf\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\previous\gf\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\previous\gf\previous24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\previous\io\previo.ico" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\print\gf\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\print\gf\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\print\gf\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\print\gf\print-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\private\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\private\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\private\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\private\gif\private-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\protection\gf\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\protection\gf\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\protection\gf\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\protection\gf\protection-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\protection\io\prot.ico" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\recycle\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\recycle\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\recycle\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\recycle\gif\recycle-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\redo\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\redo\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\redo\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\redo\gif\redo-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\refresh\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\refresh\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\refresh\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\refresh\gif\refresh-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\remove\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\remove\gif\24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\remove\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\remove\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\rightdown\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\rightdown\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\rightdown\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\rightdown\gif\rightdown-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\rightup\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\rightup\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\rightup\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\rightup\gif\rightup-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\right\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\right\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\right\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\right\gif\right-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ruler\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ruler\gif\24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ruler\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\ruler\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\save2\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\save2\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\save2\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\save2\gif\save2-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\saveall\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\saveall\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\saveall\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\saveall\gif\saveall-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\search\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\search\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\search\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\search\gif\search-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\sendmail\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\sendmail\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\sendmail\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\sendmail\gif\sendmail-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\server\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\server\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\server\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\server\gif\server-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\shoppingcart2\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\shoppingcart2\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\shoppingcart2\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\shoppingcart2\gif\shoppingcart2-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\shoppingcart\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\shoppingcart\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\shoppingcart\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\shoppingcart\gif\shoppingcart-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\smiley\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\smiley\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\smiley\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\smiley\gif\smiley-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stamp\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stamp\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stamp\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stamp\gif\stamp-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\star2\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\star2\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\star2\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\star2\gif\star2-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\star\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\star\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\star\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\star\gif\star-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stop2\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stop2\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stop2\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stop2\gif\stop2-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stop\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stop\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stop\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\stop\gif\stop-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\synth\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\synth\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\synth\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\synth\gif\synth-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\telephone\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\telephone\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\telephone\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\telephone\gif\tele-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\text\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\text\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\text\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\text\gif\text-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\toolbox\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\toolbox\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\toolbox\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\toolbox\gif\toolbox-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\traffic\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\traffic\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\traffic\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\traffic\gif\traffic-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\trashfull\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\trashfull\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\trashfull\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\trashfull\gif\trashfull-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\trash\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\trash\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\trash\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\trash\gif\trash-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\tv\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\tv\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\tv\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\tv\gif\tv-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\undo\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\undo\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\undo\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\undo\gif\undo-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\unlock\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\unlock\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\unlock\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\unlock\gif\unlock-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\up\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\up\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\up\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\up\gif\up-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\usergreen\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\usergreen\gif\24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\usergreen\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\usergreen\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\users\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\users\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\users\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\users\gif\users-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\user\gif\user-16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\user\gif\user-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\user\gif\user-32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\user\gif\user-48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\view\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\view\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\view\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\view\gif\view-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\warning2\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\warning2\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\warning2\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\warning2\gif\warning2-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\warning\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\warning\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\warning\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\warning\gif\warning-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\window\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\window\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\window\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\window\gif\window-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\zoomin\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\zoomin\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\zoomin\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\zoomin\gif\zoomin-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\zoomout\gif\16.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\zoomout\gif\32.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\zoomout\gif\48.gif" />
+    <Content Include="Images\Crystal-Office-Icon\bonus\zoomout\gif\zoomout-24.gif" />
+    <Content Include="Images\Crystal-Office-Icon\ico\add.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\addressbook.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\applications.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\backward.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\ball.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\ballblue.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\ballgreen.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\ballorange.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\ballred.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\book.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\bubbleblue.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\bubblegreen.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\burn.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\calculator.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\calendar.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\calendarorange.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\cancel.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\card.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\cd.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\cdgreen.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\cdred.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\cdyellow.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\chart2.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\chartround.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\checkmark.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\clipboard.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\clock.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\close.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\cmd2.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\connect.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\copy.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\cut.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\database.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\delete.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\desktop.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\document.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\documentadd.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\documentremove.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\documents.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\dollar.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\down.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\edit.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\euro.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\export.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\favourites.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\favouritesadd.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\favouritesremove.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\firstaid.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\folder.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\folderadd.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\folderremove.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\font.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\forward.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\globe.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\globe2.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\harddisk.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\harddiskdownload.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\harddiskupload.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\help.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\helpround.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\home.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\homered.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\image.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\images.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\import.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\info.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\junk.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\junkfull.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\left.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\leftdown.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\leftup.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\lock.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\mail.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\network.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\news.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\next.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\notepad.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\ok.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\options.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\paste.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\pause.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\pen.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\pencils.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\play.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\preference.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\preferences.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\preview.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\previous.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\print.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\private.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\protection.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\recycle.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\redo.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\refresh.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\remove.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\right.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\rightdown.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\rightup.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\ruler.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\save2.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\saveall.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\search.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\sendmail.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\server.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\shoppingcart.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\shoppingcart2.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\smiley.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\stamp.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\star.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\star2.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\stop.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\stop2.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\synth.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\telephone.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\text.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\toolbox.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\traffic.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\trash.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\trashfull.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\tv.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\undo.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\unlock.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\up.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\user.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\usergreen.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\users.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\view.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\warning.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\warning2.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\window.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\zoomin.ico" />
+    <Content Include="Images\Crystal-Office-Icon\ico\zoomout.ico" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\add.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\addressbook.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\applications.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\backward.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\ball.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\ballblue.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\ballgreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\ballorange.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\ballred.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\book.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\bubbleblue.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\bubblegreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\burn.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\calculator.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\calendar.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\calendarorange.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\cancel.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\card.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\cd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\cdgreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\cdred.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\cdyellow.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\chart2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\chartround.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\checkmark.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\clipboard.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\clock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\close.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\cmd2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\connect.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\copy.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\cut.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\database.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\delete.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\desktop.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\document.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\documentadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\documentremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\documents.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\dollar.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\down.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\edit.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\euro.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\export.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\favourites.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\favouritesadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\favouritesremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\firstaid.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\folder.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\folderadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\folderremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\font.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\forward.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\globe.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\globe2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\harddisk.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\harddiskdownload.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\harddiskupload.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\help.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\helpround.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\home.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\homered.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\image.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\images.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\import.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\info.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\junk.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\junkfull.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\left.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\leftdown.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\leftup.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\lock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\mail.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\network.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\news.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\next.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\notepad.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\ok.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\options.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\paste.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\pause.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\pen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\pencils.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\play.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\preference.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\preferences.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\preview.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\previous.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\print.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\private.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\protection.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\recycle.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\redo.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\refresh.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\remove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\right.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\rightdown.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\rightup.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\ruler.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\save2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\saveall.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\search.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\sendmail.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\server.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\shoppingcart.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\shoppingcart2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\smiley.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\stamp.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\star.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\star2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\stop.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\stop2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\synth.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\telephone.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\text.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\toolbox.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\traffic.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\trash.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\trashfull.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\tv.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\undo.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\unlock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\up.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\user.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\usergreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\users.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\view.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\warning.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\warning2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\window.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\zoomin.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\16x16\zoomout.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\add.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\addressbook.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\applications.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\backward.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\ball.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\ballblue.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\ballgreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\ballorange.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\ballred.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\book.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\bubbleblue.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\bubblegreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\burn.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\calculator.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\calendar.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\calendarorange.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\cancel.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\card.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\cd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\cdgreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\cdred.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\cdyellow.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\chart2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\chartround.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\checkmark.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\clipboard.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\clock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\close.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\cmd2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\connect.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\copy.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\cut.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\database.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\delete.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\desktop.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\document.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\documentadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\documentremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\documents.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\dollar.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\down.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\edit.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\euro.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\export.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\favourites.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\favouritesadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\favouritesremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\firstaid.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\folder.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\folderadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\folderremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\font.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\forward.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\globe.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\globe2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\harddisk.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\harddiskdownload.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\harddiskupload.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\help.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\helpround.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\home.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\homered.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\image.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\images.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\import.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\info.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\junk.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\junkfull.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\left.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\leftdown.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\leftup.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\lock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\mail.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\network.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\news.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\next.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\notepad.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\ok.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\options.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\paste.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\pause.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\pen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\pencils.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\play.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\preference.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\preferences.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\preview.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\previous.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\print.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\private.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\protection.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\recycle.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\redo.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\refresh.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\remove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\right.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\rightdown.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\rightup.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\ruler.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\save2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\saveall.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\search.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\sendmail.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\server.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\shoppingcart.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\shoppingcart2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\smiley.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\stamp.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\star.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\star2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\stop.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\stop2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\synth.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\telephone.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\text.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\toolbox.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\traffic.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\trash.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\trashfull.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\tv.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\undo.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\unlock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\up.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\user.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\usergreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\users.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\view.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\warning.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\warning2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\window.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\zoomin.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\24x24\zoomout.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\add.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\addressbook.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\applications.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\backward.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\ball.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\ballblue.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\ballgreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\ballorange.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\ballred.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\book.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\bubbleblue.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\bubblegreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\burn.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\calculator.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\calendar.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\calendarorange.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\cancel.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\card.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\cd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\cdgreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\cdred.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\cdyellow.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\chart2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\chartround.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\checkmark.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\clipboard.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\clock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\close.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\cmd2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\connect.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\copy.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\cut.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\database.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\delete.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\desktop.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\document.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\documentadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\documentremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\documents.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\dollar.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\down.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\edit.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\euro.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\export.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\favourites.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\favouritesadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\favouritesremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\firstaid.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\folder.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\folderadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\folderremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\font.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\forward.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\globe.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\globe2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\harddisk.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\harddiskdownload.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\harddiskupload.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\help.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\helpround.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\home.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\homered.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\image.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\images.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\import.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\info.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\junk.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\junkfull.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\left.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\leftdown.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\leftup.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\lock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\mail.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\network.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\news.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\next.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\notepad.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\ok.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\options.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\paste.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\pause.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\pen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\pencils.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\play.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\preference.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\preferences.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\preview.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\previous.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\print.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\private.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\protection.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\recycle.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\redo.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\refresh.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\remove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\right.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\rightdown.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\rightup.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\ruler.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\save2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\saveall.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\search.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\sendmail.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\server.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\shoppingcart.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\shoppingcart2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\smiley.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\stamp.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\star.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\star2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\stop.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\stop2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\synth.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\telephone.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\text.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\toolbox.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\traffic.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\trash.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\trashfull.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\tv.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\undo.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\unlock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\up.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\user.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\usergreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\users.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\view.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\warning.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\warning2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\window.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\zoomin.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\32x32\zoomout.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\add.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\addressbook.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\applications.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\backward.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\ball.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\ballblue.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\ballgreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\ballorange.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\ballred.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\book.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\bubbleblue.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\bubblegreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\burn.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\calculator.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\calendar.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\calendarorange.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\cancel.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\card.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\cd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\cdgreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\cdred.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\cdyellow.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\chart2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\chartround.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\checkmark.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\clipboard.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\clock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\close.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\cmd2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\connect.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\copy.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\cut.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\database.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\delete.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\desktop.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\document.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\documentadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\documentremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\documents.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\dollar.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\down.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\edit.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\euro.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\export.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\favourites.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\favouritesadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\favouritesremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\firstaid.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\folder.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\folderadd.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\folderremove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\font.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\forward.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\globe.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\globe2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\harddisk.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\harddiskdownload.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\harddiskupload.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\help.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\helpround.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\home.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\homered.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\image.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\images.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\import.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\info.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\junk.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\junkfull.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\left.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\leftdown.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\leftup.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\lock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\mail.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\network.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\news.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\next.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\notepad.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\ok.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\options.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\paste.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\pause.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\pen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\pencils.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\play.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\preference.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\preferences.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\preview.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\previous.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\print.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\private.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\protection.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\recycle.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\redo.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\refresh.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\remove.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\right.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\rightdown.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\rightup.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\ruler.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\save2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\saveall.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\search.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\sendmail.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\server.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\shoppingcart.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\shoppingcart2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\smiley.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\stamp.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\star.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\star2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\stop.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\stop2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\synth.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\telephone.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\text.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\toolbox.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\traffic.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\trash.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\trashfull.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\tv.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\undo.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\unlock.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\up.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\user.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\usergreen.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\users.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\view.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\warning.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\warning2.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\window.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\zoomin.png" />
+    <Content Include="Images\Crystal-Office-Icon\png\48x48\zoomout.png" />
+    <Content Include="Images\Document-new-icon-16.png" />
+    <Content Include="Images\Document-new-icon-24.png" />
+    <Content Include="Images\Document-new-icon-32.png" />
+    <Content Include="Images\Document-open-icon-16.png" />
+    <Content Include="Images\Document-open-icon-24.png" />
+    <Content Include="Images\Document-open-icon-32.png" />
+    <Content Include="Images\Document-save-icon-16.png" />
+    <Content Include="Images\Document-save-icon-24.png" />
+    <Content Include="Images\Document-save-icon-32.png" />
+    <Content Include="Images\empty.jpg" />
+    <Content Include="Images\import.png" />
+    <Content Include="Images\ok.png" />
+    <Content Include="Images\save-16x16.png" />
+    <Content Include="Images\save2.png" />
+    <Content Include="Images\VolumeNormal.ico" />
+    <Content Include="VolumeNormal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\Crystal-Office-Icon\bonus\copy\copy2\" />
+    <Folder Include="Images\Crystal-Office-Icon\bonus\folderremove\pmg\" />
+    <Folder Include="Images\Crystal-Office-Icon\bonus\info\pnh\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

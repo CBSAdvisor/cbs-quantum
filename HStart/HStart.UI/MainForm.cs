@@ -162,6 +162,7 @@ namespace HStart.UI
 
         private void OnApplicationExit(object sender, EventArgs e)
         {
+            StopProcess();
             Application.Exit();
         }
     }

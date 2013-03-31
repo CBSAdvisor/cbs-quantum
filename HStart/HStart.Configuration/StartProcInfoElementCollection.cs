@@ -37,6 +37,22 @@ namespace HStart.Configuration
             }
         }
 
+        public StartProcInfoElement this[object key]
+        {
+            get
+            {
+                return base.BaseGet(key) as StartProcInfoElement;
+            }
+            set
+            {
+                if (base.BaseGet(key) != null)
+                {
+                    base.BaseRemove(key);
+                }
+                this.BaseAdd(value);
+            }
+        }
+
         public void Add(StartProcInfoElement element)
         {
             BaseAdd(element);
@@ -68,6 +84,11 @@ namespace HStart.Configuration
         public void RemoveAt(int index)
         {
             BaseRemoveAt(index);
+        }
+
+        public override bool IsReadOnly()
+        {
+            return false;
         }
     }
 }

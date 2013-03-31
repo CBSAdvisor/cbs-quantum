@@ -1,6 +1,8 @@
-﻿using System;
+﻿using HStart.Configuration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -14,8 +16,8 @@ namespace HStart.UI
 {
     public partial class MainForm : Form
     {
-        private ProcessStartInfo _minerdProcInfo;
-        private Process _minerdProcess;
+        private ProcessStartInfo _procInfoStarter;
+        private Process _processStarter;
 
         private NotifyIcon _trayIcon;
         private ContextMenu _trayMenu;
@@ -61,9 +63,10 @@ namespace HStart.UI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _minerdProcInfo = CreateProccessInfo();
+            _procInfoStarter = CreateProccessInfo();
 
             _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Hidden Proccess starter running.", ToolTipIcon.Info);
+            
             ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
         }
 
@@ -71,45 +74,47 @@ namespace HStart.UI
         {
             ProcessStartInfo procInfo = new ProcessStartInfo();
 
-            procInfo.CreateNoWindow = true;
-            procInfo.UseShellExecute = false;
-            procInfo.RedirectStandardOutput = true;
-            procInfo.RedirectStandardError = true;
-            procInfo.FileName = "minerd.exe";
-            procInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            StartProcInfoSection spiSection = (StartProcInfoSection)ConfigurationManager.GetSection(StartProcInfoSection.sConfigurationSectionConst);
+
+            procInfo.CreateNoWindow = spiSection.StartProcInfos[0].CreateNoWindow;
+            procInfo.UseShellExecute = spiSection.StartProcInfos[0].UseShellExecute;
+            procInfo.RedirectStandardOutput = spiSection.StartProcInfos[0].RedirectStandardOutput;
+            procInfo.RedirectStandardError = spiSection.StartProcInfos[0].RedirectStandardError;
+            procInfo.FileName = spiSection.StartProcInfos[0].FileName;
+            procInfo.WindowStyle = spiSection.StartProcInfos[0].WindowStyle;
             //procInfo.Arguments = @"-q --userpass=Cameleer.3:helicopter --proxy=192.168.21.1:3128 --url=http://coinotron.com:8322 --algo=scrypt --threads=8 --scantime=6 --retry-pause=10";
-            procInfo.Arguments = @"-q --userpass=Cameleer.1:helicopter --url=http://coinotron.com:8322 --algo=scrypt --threads=2 --scantime=6 --retry-pause=10";
+            procInfo.Arguments = spiSection.StartProcInfos[0].Arguments;
 
             return procInfo;
         }
 
         private void StartProcess(object param)
         {
-            if (_minerdProcess == null || _minerdProcess.HasExited)
+            if (_processStarter == null || _processStarter.HasExited)
             {
-                _minerdProcess = new Process();
-                _minerdProcess.EnableRaisingEvents = true;
-                _minerdProcess.StartInfo = _minerdProcInfo;
-                _minerdProcess.Exited += _minerdProcess_Exited;
-                _minerdProcess.OutputDataReceived += new DataReceivedEventHandler(_minerdProcess_OutputDataReceived);
+                _processStarter = new Process();
+                _processStarter.EnableRaisingEvents = true;
+                _processStarter.StartInfo = _procInfoStarter;
+                _processStarter.Exited += _processStarter_Exited;
+                _processStarter.OutputDataReceived += new DataReceivedEventHandler(_processStarter_OutputDataReceived);
 
-                _minerdProcess.Start();
-                _minerdProcess.BeginOutputReadLine();
+                _processStarter.Start();
+                _processStarter.BeginOutputReadLine();
 
-                OnProccessStarted(_minerdProcess, new EventArgs());
+                OnProccessStarted(_processStarter, new EventArgs());
             }
 
         }
 
         private void StopProcess()
         {
-            if (_minerdProcess != null && !_minerdProcess.HasExited)
+            if (_processStarter != null && !_processStarter.HasExited)
             {
-                _minerdProcess.Kill();
+                _processStarter.Kill();
             }
         }
 
-        private void _minerdProcess_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        private void _processStarter_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             this.Invoke(new MethodInvoker(
                 delegate
@@ -117,7 +122,7 @@ namespace HStart.UI
                 }));
         }
 
-        private void _minerdProcess_Exited(object sender, EventArgs e)
+        private void _processStarter_Exited(object sender, EventArgs e)
         {
             OnProccessStoped(sender, e);
         }
@@ -137,7 +142,7 @@ namespace HStart.UI
             this.Invoke(new MethodInvoker(
                 delegate
                 {
-                    _minerdProcess = null;
+                    _processStarter = null;
                     _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Proccess minerd stoped.", ToolTipIcon.Info);
                     _miRunStop.Text = "Run";
                 }));
@@ -145,7 +150,7 @@ namespace HStart.UI
 
         private void OnRunStopMenuItem(object sender, EventArgs e)
         {
-            if (_minerdProcess == null || _minerdProcess.HasExited)
+            if (_processStarter == null || _processStarter.HasExited)
             {
                 ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
             }

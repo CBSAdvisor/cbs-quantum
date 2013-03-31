@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>euro.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -79,6 +82,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="euro.ico" />
+    <Content Include="images\euro.ico" />
     <Content Include="minerd.distr\libcurl-4.dll" />
     <Content Include="minerd.distr\minerd.exe" />
     <Content Include="minerd.distr\pthreadGC2.dll" />

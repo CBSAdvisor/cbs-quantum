@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,11 +17,58 @@ namespace HStart.Minerd
         private ProcessStartInfo _minerdProcInfo;
         private Process _minerdProcess;
 
+        private NotifyIcon _trayIcon;
+        private ContextMenu _trayMenu;
+
+        private MenuItem _miRun;
+        private MenuItem _miStop;
+        private MenuItem _miExit;
+
         public MainForm()
         {
             InitializeComponent();
 
-            //Environment.CurrentDirectory
+            // Create a simple tray menu with only one item.
+            _trayMenu = new ContextMenu();
+
+            _miRun = new MenuItem("Run", OnRunProccess);
+            _miRun.Visible = true;
+            _trayMenu.MenuItems.Add(_miRun);
+
+            _miStop = new MenuItem("Stop", OnRunProccess);
+            _miStop.Visible = false;
+            _trayMenu.MenuItems.Add(_miStop);
+
+            _miExit = new MenuItem("Exit", OnApplicationExit);
+            _miExit.Visible = true;
+            _trayMenu.MenuItems.Add(_miExit);
+
+            // Create a tray icon.
+            _trayIcon = new NotifyIcon();
+            _trayIcon.BalloonTipIcon = ToolTipIcon.Info;
+            _trayIcon.BalloonTipTitle = "Nidden Proccess Starter";
+            _trayIcon.BalloonTipText = "Minerd was started.";
+            _trayIcon.Text = "Nidden minerd started.";
+            _trayIcon.Icon = (Icon)this.Icon.Clone();
+
+            // Add menu to tray icon and show it.
+            _trayIcon.ContextMenu = _trayMenu;
+            _trayIcon.Visible = true;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            Visible = false; // Hide form window.
+            ShowInTaskbar = false; // Remove from taskbar.
+
+            base.OnLoad(e);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            _minerdProcInfo = CreateProccessInfo();
+
+            _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Hidden Proccess starter running.", ToolTipIcon.Info);
         }
 
         private ProcessStartInfo CreateProccessInfo()
@@ -39,32 +87,29 @@ namespace HStart.Minerd
             return procInfo;
         }
 
-        private void _btnRun_Click(object sender, EventArgs e)
+        private void StartProcess(object param)
         {
-            try
+            if (_minerdProcess == null || _minerdProcess.HasExited)
             {
-                if (_minerdProcess == null)
-                {
-                    _minerdProcess = new Process();
-                    _minerdProcess.EnableRaisingEvents = true;
-                    _minerdProcess.StartInfo = _minerdProcInfo;
-                    _minerdProcess.Exited += _minerdProcess_Exited;
-                    _minerdProcess.OutputDataReceived += new DataReceivedEventHandler(_minerdProcess_OutputDataReceived);
-                    
-                    _btnRun.Text = "Stop";
-                    _lblProcOutput.Text = string.Empty;
+                _minerdProcess = new Process();
+                _minerdProcess.EnableRaisingEvents = true;
+                _minerdProcess.StartInfo = _minerdProcInfo;
+                _minerdProcess.Exited += _minerdProcess_Exited;
+                _minerdProcess.OutputDataReceived += new DataReceivedEventHandler(_minerdProcess_OutputDataReceived);
 
-                    _minerdProcess.Start();
-                    _minerdProcess.BeginOutputReadLine();
-                }
-                else
-                {
-                    _minerdProcess.Kill();
-                }
+                _minerdProcess.Start();
+                _minerdProcess.BeginOutputReadLine();
+
+                OnProccessStarted(_minerdProcess, new EventArgs());
             }
-            catch
+
+        }
+
+        private void StopProcess()
+        {
+            if (_minerdProcess != null && !_minerdProcess.HasExited)
             {
-                // Log error.
+                _minerdProcess.Kill();
             }
         }
 
@@ -73,23 +118,52 @@ namespace HStart.Minerd
             this.Invoke(new MethodInvoker(
                 delegate
                 {
-                    _lblProcOutput.Text = e.Data;
                 }));
         }
 
         private void _minerdProcess_Exited(object sender, EventArgs e)
         {
+            OnProccessStoped(sender, e);
+        }
+
+        private void OnProccessStarted(object sender, EventArgs e)
+        {
+            this.Invoke(new MethodInvoker(
+                delegate
+                {
+                    _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Proccess minerd started.", ToolTipIcon.Info);
+                }));
+        }
+
+        private void OnProccessStoped(object sender, EventArgs e)
+        {
             this.Invoke(new MethodInvoker(
                 delegate
                 {
                     _minerdProcess = null;
-                    _btnRun.Text = "Run";
+                    _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Proccess minerd stoped.", ToolTipIcon.Info);
                 }));
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void OnRunProccess(object sender, EventArgs e)
         {
-            _minerdProcInfo = CreateProccessInfo();
+            ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
+
+            _miRun.Visible = false;
+            _miStop.Visible = true;
+        }
+
+        private void OnStopProccess(object sender, EventArgs e)
+        {
+            StopProcess();
+
+            _miRun.Visible = true;
+            _miStop.Visible = false;
+        }
+
+        private void OnApplicationExit(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

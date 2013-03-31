@@ -20,8 +20,7 @@ namespace HStart.Minerd
         private NotifyIcon _trayIcon;
         private ContextMenu _trayMenu;
 
-        private MenuItem _miRun;
-        private MenuItem _miStop;
+        private MenuItem _miRunStop;
         private MenuItem _miExit;
 
         public MainForm()
@@ -31,13 +30,9 @@ namespace HStart.Minerd
             // Create a simple tray menu with only one item.
             _trayMenu = new ContextMenu();
 
-            _miRun = new MenuItem("Run", OnRunProccess);
-            _miRun.Visible = true;
-            _trayMenu.MenuItems.Add(_miRun);
-
-            _miStop = new MenuItem("Stop", OnRunProccess);
-            _miStop.Visible = false;
-            _trayMenu.MenuItems.Add(_miStop);
+            _miRunStop = new MenuItem("Run", OnRunStopMenuItem);
+            _miRunStop.Visible = true;
+            _trayMenu.MenuItems.Add(_miRunStop);
 
             _miExit = new MenuItem("Exit", OnApplicationExit);
             _miExit.Visible = true;
@@ -69,6 +64,7 @@ namespace HStart.Minerd
             _minerdProcInfo = CreateProccessInfo();
 
             _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Hidden Proccess starter running.", ToolTipIcon.Info);
+            ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
         }
 
         private ProcessStartInfo CreateProccessInfo()
@@ -132,6 +128,7 @@ namespace HStart.Minerd
                 delegate
                 {
                     _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Proccess minerd started.", ToolTipIcon.Info);
+                    _miRunStop.Text = "Stop";
                 }));
         }
 
@@ -142,23 +139,20 @@ namespace HStart.Minerd
                 {
                     _minerdProcess = null;
                     _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Proccess minerd stoped.", ToolTipIcon.Info);
+                    _miRunStop.Text = "Run";
                 }));
         }
 
-        private void OnRunProccess(object sender, EventArgs e)
+        private void OnRunStopMenuItem(object sender, EventArgs e)
         {
-            ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
-
-            _miRun.Visible = false;
-            _miStop.Visible = true;
-        }
-
-        private void OnStopProccess(object sender, EventArgs e)
-        {
-            StopProcess();
-
-            _miRun.Visible = true;
-            _miStop.Visible = false;
+            if (_minerdProcess == null || _minerdProcess.HasExited)
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
+            }
+            else 
+            {
+                StopProcess();
+            }
         }
 
         private void OnApplicationExit(object sender, EventArgs e)

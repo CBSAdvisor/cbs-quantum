@@ -39,6 +39,9 @@ namespace HStart.Configuration
         [ConfigurationProperty("ProcessWindowStyle", DefaultValue = "Hidden", IsRequired = true)]
         public ProcessWindowStyle WindowStyle { get { return (ProcessWindowStyle)this["ProcessWindowStyle"]; } set { this["ProcessWindowStyle"] = value; } }
 
+        [ConfigurationProperty("WorkingDirectory", DefaultValue = "", IsRequired = false)]
+        public string WorkingDirectory { get { return (string)this["WorkingDirectory"]; } set { this["WorkingDirectory"] = value; } }
+
         public override bool IsReadOnly()
         {
             return false;

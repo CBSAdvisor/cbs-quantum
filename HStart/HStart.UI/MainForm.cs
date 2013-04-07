@@ -68,6 +68,8 @@ namespace HStart.UI
 
             Task task = new Task((pingProcessName) =>
             {
+                Log4.UserLog.InfoFormat("Process monitoring started : {0}.", pingProcessName);
+
                 while (true)
                 {
                     Thread.Sleep(1500);
@@ -81,9 +83,14 @@ namespace HStart.UI
 
                     if (count == 0)
                     {
+                        Log4.UserLog.InfoFormat("Process \"{0}\" not found. Monitor will try restart.", pingProcessName);
+
                         ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
                     }
                 }
+
+                Log4.UserLog.InfoFormat("Process monitoring stoped : {0}.", pingProcessName);
+
             }, processName, ctsMonitorProcess);
 
             return task;

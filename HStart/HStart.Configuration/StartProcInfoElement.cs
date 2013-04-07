@@ -24,10 +24,10 @@ namespace HStart.Configuration
         [ConfigurationProperty("UseShellExecute", DefaultValue = "false", IsRequired = false)]
         public bool UseShellExecute { get { return (bool)this["UseShellExecute"]; } set { this["UseShellExecute"] = value; } }
 
-        [ConfigurationProperty("RedirectStandardOutput", DefaultValue = "true", IsRequired = false)]
+        [ConfigurationProperty("RedirectStandardOutput", DefaultValue = "false", IsRequired = false)]
         public bool RedirectStandardOutput { get { return (bool)this["RedirectStandardOutput"]; } set { this["RedirectStandardOutput"] = value; } }
 
-        [ConfigurationProperty("RedirectStandardError", DefaultValue = "true", IsRequired = false)]
+        [ConfigurationProperty("RedirectStandardError", DefaultValue = "false", IsRequired = false)]
         public bool RedirectStandardError { get { return (bool)this["RedirectStandardError"]; } set { this["RedirectStandardError"] = value; } }
 
         [ConfigurationProperty("FileName", DefaultValue = "", IsRequired = true)]

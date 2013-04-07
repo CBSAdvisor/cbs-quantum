@@ -1,4 +1,5 @@
-﻿using HStart.Configuration;
+﻿using Cbs.LogLib;
+using HStart.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using log4net;
 
 namespace HStart.UI
 {
@@ -25,9 +27,15 @@ namespace HStart.UI
         private MenuItem _miRunStop;
         private MenuItem _miExit;
 
+        private Task _monitorProcess = null;
+        private bool _needMonitorProcess = false;
+        private CancellationTokenSource _ctsMonitorProcess;
+
         public MainForm()
         {
             InitializeComponent();
+
+            Application.ApplicationExit += Application_ApplicationExit;
 
             // Create a simple tray menu with only one item.
             _trayMenu = new ContextMenu();
@@ -43,7 +51,7 @@ namespace HStart.UI
             // Create a tray icon.
             _trayIcon = new NotifyIcon();
             _trayIcon.BalloonTipIcon = ToolTipIcon.Info;
-            _trayIcon.BalloonTipTitle = "Nidden Proccess Starter";
+            _trayIcon.BalloonTipTitle = "Nidden Process Starter";
             _trayIcon.BalloonTipText = "Minerd was started.";
             _trayIcon.Text = "Nidden minerd started.";
             _trayIcon.Icon = (Icon)this.Icon.Clone();
@@ -53,8 +61,58 @@ namespace HStart.UI
             _trayIcon.Visible = true;
         }
 
+        public Task MonitorProcessAsync(string processName)
+        {
+            _ctsMonitorProcess = new CancellationTokenSource();
+            CancellationToken ctsMonitorProcess = _ctsMonitorProcess.Token;
+
+            Task task = new Task((pingProcessName) =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(1500);
+
+                    if (ctsMonitorProcess.IsCancellationRequested)
+                    {
+                        break;
+                    }
+
+                    int count = Process.GetProcessesByName((string)pingProcessName).Count();
+
+                    if (count == 0)
+                    {
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
+                    }
+                }
+            }, processName, ctsMonitorProcess);
+
+            return task;
+
+            //return Task.Factory.StartNew(() =>
+            //{
+            //    while (true)
+            //    {
+            //        Thread.Sleep(1500);
+
+            //        if (ctsMonitorProcess.IsCancellationRequested)
+            //        {
+            //            break;
+            //        }
+
+            //        int count = Process.GetProcessesByName(processName).Count();
+
+            //        if (count == 0)
+            //        {
+            //            //ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
+            //        }
+            //    }
+            //}, ctsMonitorProcess);
+        }
+
         protected override void OnLoad(EventArgs e)
         {
+            Log4.UserLog.InfoFormat("\"{0}\" v{1} started.", Application.ProductName, Application.ProductVersion);
+
             Visible = false; // Hide form window.
             ShowInTaskbar = false; // Remove from taskbar.
 
@@ -63,14 +121,14 @@ namespace HStart.UI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _procInfoStarter = CreateProccessInfo();
+            _procInfoStarter = CreateProcessInfo();
 
-            _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Hidden Proccess starter running.", ToolTipIcon.Info);
-            
+            _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Hidden Process starter running.", ToolTipIcon.Info);
+
             ThreadPool.QueueUserWorkItem(new WaitCallback(StartProcess));
         }
 
-        private ProcessStartInfo CreateProccessInfo()
+        private ProcessStartInfo CreateProcessInfo()
         {
             ProcessStartInfo procInfo = new ProcessStartInfo();
 
@@ -84,6 +142,9 @@ namespace HStart.UI
             procInfo.WindowStyle = spiSection.StartProcInfos[0].WindowStyle;
             //procInfo.Arguments = @"-q --userpass=Cameleer.3:helicopter --proxy=192.168.21.1:3128 --url=http://coinotron.com:8322 --algo=scrypt --threads=8 --scantime=6 --retry-pause=10";
             procInfo.Arguments = spiSection.StartProcInfos[0].Arguments;
+            procInfo.WorkingDirectory = Environment.CurrentDirectory;
+
+            Log4.UserLog.InfoFormat("Created process info for {0}", procInfo.FileName);
 
             return procInfo;
         }
@@ -95,13 +156,14 @@ namespace HStart.UI
                 _processStarter = new Process();
                 _processStarter.EnableRaisingEvents = true;
                 _processStarter.StartInfo = _procInfoStarter;
+
                 _processStarter.Exited += _processStarter_Exited;
                 _processStarter.OutputDataReceived += new DataReceivedEventHandler(_processStarter_OutputDataReceived);
 
                 _processStarter.Start();
-                _processStarter.BeginOutputReadLine();
+                //_processStarter.BeginOutputReadLine();
 
-                OnProccessStarted(_processStarter, new EventArgs());
+                OnProcessStarted(_processStarter, new EventArgs());
             }
 
         }
@@ -110,6 +172,12 @@ namespace HStart.UI
         {
             if (_processStarter != null && !_processStarter.HasExited)
             {
+                if (_monitorProcess != null && _monitorProcess.Status == TaskStatus.Running)
+                {
+                    _ctsMonitorProcess.Cancel();
+                    _monitorProcess.Wait();
+                }
+
                 _processStarter.Kill();
             }
         }
@@ -124,26 +192,39 @@ namespace HStart.UI
 
         private void _processStarter_Exited(object sender, EventArgs e)
         {
-            OnProccessStoped(sender, e);
+            OnProcessStoped((Process)sender, e);
         }
 
-        private void OnProccessStarted(object sender, EventArgs e)
+        private void OnProcessStarted(object sender, EventArgs e)
         {
+            Log4.UserLog.InfoFormat("Process {0} started.", ((Process)sender).ProcessName);
+
+            if (_monitorProcess != null && _monitorProcess.Status == TaskStatus.Running)
+            {
+                _ctsMonitorProcess.Cancel();
+                _monitorProcess.Wait();
+            }
+
+            _monitorProcess = MonitorProcessAsync(_processStarter.ProcessName);
+
+            _monitorProcess.Start();
+
             this.Invoke(new MethodInvoker(
                 delegate
                 {
-                    _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Proccess minerd started.", ToolTipIcon.Info);
+                    _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Process minerd started.", ToolTipIcon.Info);
                     _miRunStop.Text = "Stop";
                 }));
         }
 
-        private void OnProccessStoped(object sender, EventArgs e)
+        private void OnProcessStoped(Process sender, EventArgs e)
         {
+            Log4.UserLog.InfoFormat("Process stoped. Exit code {0}", ((Process)sender).ExitCode);
             this.Invoke(new MethodInvoker(
                 delegate
                 {
                     _processStarter = null;
-                    _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Proccess minerd stoped.", ToolTipIcon.Info);
+                    _trayIcon.ShowBalloonTip(5000, "HProc Starter", "Process minerd stoped.", ToolTipIcon.Info);
                     _miRunStop.Text = "Run";
                 }));
         }
@@ -162,8 +243,13 @@ namespace HStart.UI
 
         private void OnApplicationExit(object sender, EventArgs e)
         {
-            StopProcess();
             Application.Exit();
+        }
+
+        void Application_ApplicationExit(object sender, EventArgs e)
+        {
+            StopProcess();
+            Log4.UserLog.InfoFormat("\"{0}\" v{1} exited.", Application.ProductName, Application.ProductVersion);
         }
     }
 }

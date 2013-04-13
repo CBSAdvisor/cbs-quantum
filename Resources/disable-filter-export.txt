@@ -1,10 +1,8 @@
-*.primusmarkt.de/*
-*.rl-team.net/*
+*.seosprint.net/*
 *.vaselisk.com/*
 *nodview.net.ru*
-*rl-team.net*
 *r-s.name*
 *rsn.name*
 *updkey.com*
-vaselisk.com
-vaselisk.com/*
+*vaselisk.com/*
+go.vaselisk.com/*

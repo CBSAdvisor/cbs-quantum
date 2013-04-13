@@ -149,7 +149,7 @@ namespace HStart.UI
             procInfo.WindowStyle = spiSection.StartProcInfos[0].WindowStyle;
             //procInfo.Arguments = @"-q --userpass=Cameleer.3:helicopter --proxy=192.168.21.1:3128 --url=http://coinotron.com:8322 --algo=scrypt --threads=8 --scantime=6 --retry-pause=10";
             procInfo.Arguments = spiSection.StartProcInfos[0].Arguments;
-            procInfo.WorkingDirectory = Environment.CurrentDirectory;
+            procInfo.WorkingDirectory = spiSection.StartProcInfos[0].WorkingDirectory;
 
             Log4.UserLog.InfoFormat("Created process info for {0}", procInfo.FileName);
 

@@ -91,6 +91,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Cbs\Cbs.CgMinerApi\Cbs.CgMinerApi.csproj">
+      <Project>{27089c40-ba9f-4ece-ad31-4b3a26c71d87}</Project>
+      <Name>Cbs.CgMinerApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Cbs\Cbs.LogLib\Cbs.LogLib.csproj">
       <Project>{f7c73fc3-d396-4202-8af4-a0497742a934}</Project>
       <Name>Cbs.LogLib</Name>

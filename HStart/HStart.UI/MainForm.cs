@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
+using Cbs.CgMinerApi;
 
 namespace HStart.UI
 {
@@ -30,6 +31,8 @@ namespace HStart.UI
         private Task _monitorProcess = null;
         private bool _needMonitorProcess = false;
         private CancellationTokenSource _ctsMonitorProcess;
+
+        private CgMinerApi _cgMinerApi;
 
         public MainForm()
         {
@@ -81,6 +84,8 @@ namespace HStart.UI
 
                     int count = Process.GetProcessesByName((string)pingProcessName).Count();
 
+                    _cgMinerApi.Send("gpu|0", true);
+
                     if (count == 0)
                     {
                         Log4.UserLog.InfoFormat("Process \"{0}\" not found. Monitor will try restart.", pingProcessName);
@@ -122,6 +127,8 @@ namespace HStart.UI
 
             Visible = false; // Hide form window.
             ShowInTaskbar = false; // Remove from taskbar.
+
+            _cgMinerApi = new CgMinerApi("127.0.0.1", 4028);
 
             base.OnLoad(e);
         }

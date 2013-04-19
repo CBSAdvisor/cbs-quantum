@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cbs.LogLib", "..\Cbs\Cbs.Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cbs.CgMinerApi", "..\Cbs\Cbs.CgMinerApi\Cbs.CgMinerApi.csproj", "{27089C40-BA9F-4ECE-AD31-4B3A26C71D87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Api", "Test.Api\Test.Api.csproj", "{3C689D50-77C2-42E5-B4AC-1DE242624BCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{27089C40-BA9F-4ECE-AD31-4B3A26C71D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27089C40-BA9F-4ECE-AD31-4B3A26C71D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27089C40-BA9F-4ECE-AD31-4B3A26C71D87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C689D50-77C2-42E5-B4AC-1DE242624BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C689D50-77C2-42E5-B4AC-1DE242624BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C689D50-77C2-42E5-B4AC-1DE242624BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C689D50-77C2-42E5-B4AC-1DE242624BCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

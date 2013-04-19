@@ -75,7 +75,7 @@ namespace HStart.UI
 
                 while (true)
                 {
-                    Thread.Sleep(1500);
+                    Thread.Sleep(5000);
 
                     if (ctsMonitorProcess.IsCancellationRequested)
                     {
@@ -84,7 +84,7 @@ namespace HStart.UI
 
                     int count = Process.GetProcessesByName((string)pingProcessName).Count();
 
-                    _cgMinerApi.Send("gpu|0", true);
+                    GpuInfo gpuInfo = _cgMinerApi.GetGpuInfo(0);
 
                     if (count == 0)
                     {

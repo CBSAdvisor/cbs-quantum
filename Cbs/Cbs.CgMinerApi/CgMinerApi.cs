@@ -6,7 +6,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.VisualBasic;
+using Newtonsoft.Json.Linq;
 
 namespace Cbs.CgMinerApi
 {
@@ -28,9 +30,11 @@ namespace Cbs.CgMinerApi
             };
         }
 
-        public Dictionary<string, string> Send(string sCommandMessage, bool bIgnoreErrors = false)
+        public JObject Send(string sCommand, string sParam, bool bIgnoreErrors = false)
         {
-            Dictionary<string, string> result = new Dictionary<string,string>();
+            LogLib.Log4.UserLog.InfoFormat("Send command: {0}", sCommand);
+
+            JObject result = null;
             byte[] buffer = new byte[0x2001];
             
             try
@@ -44,8 +48,11 @@ namespace Cbs.CgMinerApi
 
                 socket.Connect(EndPoint);
 
-                byte[] bytes = Encoding.ASCII.GetBytes(sCommandMessage);
+                string postString = BuildPostData(sCommand, sParam);
+                byte[] bytes = Encoding.ASCII.GetBytes(postString);
                 int sendCount = socket.Send(bytes);
+                LogLib.Log4.UserLog.InfoFormat("Sent {0} bytes.\n{1}", sendCount, postString);
+
                 int count = socket.Receive(buffer);
                 string response = Encoding.UTF8.GetString(buffer, 0, count);
                 while (socket.Available > 0)
@@ -57,26 +64,71 @@ namespace Cbs.CgMinerApi
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
 
-                response = Strings.Replace(response, "|", ",", 1, -1, CompareMethod.Binary);
-                response = Strings.Replace(response, "\0", "", 1, -1, CompareMethod.Binary);
-
-                String[] pairs = response.Split(',');
-                foreach (string pair in pairs)
-                {
-                    string[] propVal = pair.Split('=');
-                    result.Add(propVal[0].ToLower(), (propVal.Length == 2) ? propVal[1] : String.Empty);
-                }
+                result = JObject.Parse(response);
+                LogLib.Log4.UserLog.InfoFormat("Received response:\n{0}", result.ToString());
             }
             catch (Exception ex)
             {
+                LogLib.Log4.UserLog.ErrorFormat("Send {0}:\n{1}", sCommand, ex);
             }
 
             return result;
         }
 
+        public GpuInfo GetGpuInfo(int gpu)
+        {
+            JObject response = Send("gpu", gpu.ToString(), true);
+
+            return GpuInfo.ReadFromJObject(response["GPU"] as JObject);
+        }
 
         public IPAddress Address { get; private set; }
         public int Port { get; private set; }
         public IPEndPoint EndPoint { get; private set; }
+
+        #region Private methods
+
+        private Dictionary<string, string> BuildDictionary(string[] keyValPairs)
+        {
+            LogLib.Log4.DeveloperLog.Info("BuildDictionary:");
+
+            Dictionary<string, string> result = new Dictionary<string, string>();
+
+            string propName = String.Empty;
+            string propValue = String.Empty;
+
+            foreach (string pair in keyValPairs)
+            {
+                string[] propValPair = pair.Split('=');
+
+                propName = propValPair[0].ToLower();
+                propValue = (propValPair.Length == 2) ? propValPair[1] : String.Empty;
+
+                if (!String.IsNullOrEmpty(propName))
+                {
+                    result.Add(propName, propValue);
+                    LogLib.Log4.DeveloperLog.InfoFormat("{0}={1}", propName, propValue);
+                }
+            }
+
+            return result;
+        }
+
+        public static string BuildPostData(string cmd, string param = "")
+        {
+            string s = String.Empty;
+
+            s = "{";
+            s += String.Format("\"command\":\"{0}\"", cmd);
+            if (!String.IsNullOrEmpty(param))
+            {
+                s += String.Format(",\"parameter\":\"{0}\"", HttpUtility.UrlEncode(param));
+            }
+            s += "}";
+
+            return s;
+        }
+
+        #endregion
     }
 }

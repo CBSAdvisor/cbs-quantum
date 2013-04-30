@@ -6,93 +6,126 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Cbs.CgMinerApi
 {
-    public class GpuInfo : ImplementNotifyPropertyChanged
+    [JsonObject(MemberSerialization.OptIn)]
+    public class GpuSection : ImplementNotifyPropertyChanged
     {
-        private long _accepted;
-        private float _acceptedDifficulty;
-        private int _activity;
-        private int _clock;
-        private string _devicePath;
-        private float _diff1Work;
-        private string _driver;
-        private bool _enabled;
-        private long _errors;
-        private int _fanPercent;
-        private int _fanSpeed;
-        private int _id;
-        private int _intensity;
-        private string _kernel;
-        private float _lastShareDifficulty;
-        private int _lastSharePool;
-        private long _lastShareTime;
-        private long _lastValidWork;
-        private int _memory;
-        private float _mhs5sec;
-        private float _mhsavg;
-        private int _powertune;
-        private long _rejected;
-        private float _rejectedDifficulty;
-        private string _returnString;
+        private int _gpu;
+        private string _enabled;
         private string _status;
         private float _temperature;
-        private double _totalMH;
+        private int _fanSpeed;
+        private int _fanPercent;
+        private int _gpuClock;
+        private int _memoryClock;
+        private float _gpuVoltage;
+        private int _gpuActivity;
+        private int _powertune;
+        private float _mhsAv;
+        private float _mhs5s;
+        private int _accepted;
+        private int _rejected;
+        private int _hardwareErrors;
         private float _utility;
-        private float _voltage;
+        private string _intensity;
+        private int _lastSharePool;
+        private int _lastShareTime;
+        private float _totalMH;
+        private int _diff1Work;
+        private float _difficultyAccepted;
+        private float _difficultyRejected;
+        private float _lastShareDifficulty;
+        private int _lastValidWork;
 
         private static CultureInfo _enUsCulrureInfo = CultureInfo.GetCultureInfo("en-US");
 
-        public GpuInfo()
+        public GpuSection()
         {
         }
 
-        public static GpuInfo ReadFromJObject(JObject jObj)
+        public static GpuSection ReadFromJObject(JObject jObj)
         {
-            GpuInfo gpuInfo = new GpuInfo();
-
-            gpuInfo.Accepted = jObj.Value<long>("accepted");
-            gpuInfo.Activity = jObj.Value<int>("activity");
-            gpuInfo.Mhs5sec = jObj.Value<float>("mhs 5s");
-            gpuInfo.Mhsavg = jObj.Value<float>("mhs av");
-            gpuInfo.TotalMH = jObj.Value<double>("total mh");
+            GpuSection gpuInfo = new GpuSection();
 
             return gpuInfo;
         }
 
         #region Properties
 
-        public long Accepted
+        [JsonProperty("GPU")]
+        public int GPU
+        {
+            get { return _gpu; }
+            set { _gpu = value; NotifyPropertyChanged(); }
+        }
+
+        [JsonProperty("Enabled")]
+        public string Enabled
+        {
+            get { return _enabled; }
+            set { _enabled = value; NotifyPropertyChanged(); }
+        }
+        public string Status { get; set; }
+        public float Temperature { get; set; }
+        public int FanSpeed { get; set; }
+        public int FanPercent { get; set; }
+        public int GPUClock { get; set; }
+        public int MemoryClock { get; set; }
+        public float GPUVoltage { get; set; }
+
+        [JsonProperty("GPU Activity")]
+        public int GPUActivity
+        {
+            get { return _gpuActivity; }
+            set { _gpuActivity = value; NotifyPropertyChanged(); }
+        }
+
+        public int Powertune { get; set; }
+
+        [JsonProperty("MHS 5s")]
+        public float MHS5s
+        {
+            get { return _mhs5s; }
+            set { _mhs5s = value; NotifyPropertyChanged(); }
+        }
+
+        [JsonProperty("MHS av")]
+        public float MHSav
+        {
+            get { return _mhsAv; }
+            set { _mhsAv = value; NotifyPropertyChanged(); }
+        }
+
+        [JsonProperty("Accepted")]
+        public int Accepted
         {
             get { return _accepted; }
             set { _accepted = value; NotifyPropertyChanged(); }
         }
 
-        public int Activity
-        {
-            get { return _activity; }
-            set { _activity = value; NotifyPropertyChanged(); }
-        }
+        public int Rejected { get; set; }
+        public int HardwareErrors { get; set; }
+        public float Utility { get; set; }
+        public string Intensity { get; set; }
+        public int LastSharePool { get; set; }
+        public int LastShareTime { get; set; }
 
-        public float Mhs5sec
-        {
-            get { return _mhs5sec; }
-            set { _mhs5sec = value; NotifyPropertyChanged(); }
-        }
-
-        public float Mhsavg
-        {
-            get { return _mhsavg; }
-            set { _mhsavg = value; NotifyPropertyChanged(); }
-        }
-
-        public double TotalMH
+        [JsonProperty("Total MH")]
+        public float TotalMH
         {
             get { return _totalMH; }
             set { _totalMH = value; NotifyPropertyChanged(); }
         }
+
+        public int Diff1Work { get; set; }
+        public float DifficultyAccepted { get; set; }
+        public float DifficultyRejected { get; set; }
+        public float LastShareDifficulty { get; set; }
+        public int LastValidWork { get; set; }
 
         #endregion
 

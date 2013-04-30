@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BLToolkit.4">
-      <HintPath>..\..\HStart\packages\BLToolkit.4.1.20\lib\net40-full\BLToolkit.4.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\HStart\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
@@ -51,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CgMinerApi.cs" />
+    <Compile Include="Converters\ResponseStatusConverter.cs" />
     <Compile Include="Converters\UnixTimeConverter.cs" />
     <Compile Include="GpuInfo.cs" />
     <Compile Include="ImplementNotifyPropertyChanged.cs" />

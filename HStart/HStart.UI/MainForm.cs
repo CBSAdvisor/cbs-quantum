@@ -84,7 +84,7 @@ namespace HStart.UI
 
                     int count = Process.GetProcessesByName((string)pingProcessName).Count();
 
-                    GpuInfo gpuInfo = _cgMinerApi.GetGpuInfo(0);
+                    GpuSection gpuInfo = _cgMinerApi.GetGpuSection(0);
 
                     if (count == 0)
                     {

@@ -27,6 +27,7 @@ namespace Test.Api
             JObject jObj = cgMinerApi.Send("gpu", "0", true);
 
             StatusSection statSect = JsonConvert.DeserializeObject<StatusSection>(jObj["STATUS"][0].ToString());
+            GpuSection gpuSect = JsonConvert.DeserializeObject<GpuSection>(jObj["GPU"][0].ToString());
         }
 
         string Query(string cmd, string param = "")
@@ -63,7 +64,7 @@ namespace Test.Api
 
             var result = JObject.Parse(response);
 
-            var gpuInfo = JsonConvert.DeserializeObject<GpuInfo>(result["GPU"].ToString());
+            var gpuInfo = JsonConvert.DeserializeObject<GpuSection>(result["GPU"][0].ToString());
 
             return response;
         }

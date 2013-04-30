@@ -20,7 +20,7 @@ namespace Cbs.CgMinerApi
     [JsonObject(MemberSerialization.OptIn)]
     public class StatusSection : ImplementNotifyPropertyChanged
     {
-        private string _status;
+        private eMsgStatus _status;
         private DateTime _when;
         private int _code;
         private string _msg;
@@ -33,7 +33,8 @@ namespace Cbs.CgMinerApi
         #region Properties
 
         [JsonProperty("STATUS")]
-        public string Status
+        [JsonConverter(typeof(ResponseStatusConverter))]
+        public eMsgStatus Status
         {
             get { return _status; }
             set { _status = value; NotifyPropertyChanged(); }

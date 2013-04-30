@@ -75,11 +75,11 @@ namespace Cbs.CgMinerApi
             return result;
         }
 
-        public GpuInfo GetGpuInfo(int gpu)
+        public GpuSection GetGpuSection(int gpu)
         {
             JObject response = Send("gpu", gpu.ToString(), true);
 
-            return GpuInfo.ReadFromJObject(response["GPU"] as JObject);
+            return GpuSection.ReadFromJObject(response["GPU"] as JObject);
         }
 
         public IPAddress Address { get; private set; }

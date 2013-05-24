@@ -43,6 +43,8 @@ namespace FFG.Forms
         private bool _useAutoNumbers = false;
         private int _autoNumbersIndex = 0;
 
+        Timer _autoplayTimer = new Timer();
+
         public MainForm()
         {
             InitializeComponent();
@@ -442,6 +444,18 @@ namespace FFG.Forms
         {
             _lblNextNumber.Text = e.Number.ToString();
             _selNumberPopup.Hide();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            _autoplayTimer.Interval = 500;
+            _autoplayTimer.Tick += _autoplayTimer_Tick;
+        }
+
+        void _autoplayTimer_Tick(object sender, EventArgs e)
+        {
+            this.Invoke(new MethodInvoker(delegate {  
+            }));
         }
     }
 }

@@ -1290,6 +1290,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FFG";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this._pnlDozenStat.ResumeLayout(false);
             this._pnlColumnStat.ResumeLayout(false);
             this._pnlSpinStat.ResumeLayout(false);

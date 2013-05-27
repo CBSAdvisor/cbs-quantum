@@ -450,11 +450,18 @@ namespace FFG.Forms
         {
             _autoplayTimer.Interval = 500;
             _autoplayTimer.Tick += _autoplayTimer_Tick;
+            //_autoplayTimer.Start();
         }
 
         void _autoplayTimer_Tick(object sender, EventArgs e)
         {
-            this.Invoke(new MethodInvoker(delegate {  
+            this.Invoke(new MethodInvoker(delegate {
+                if ((_autoNumbers.Length == _autoNumbersIndex) || !_useAutoNumbers)
+                {
+                    _autoplayTimer.Stop();
+                    return;
+                }
+                _btnSpin_Click(_btnSpin, new EventArgs());
             }));
         }
     }

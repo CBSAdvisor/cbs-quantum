@@ -1,8 +1,0 @@
-*.seosprint.net/*
-*.vaselisk.com/*
-*nodview.net.ru*
-*r-s.name*
-*rsn.name*
-*updkey.com*
-*vaselisk.com/*
-go.vaselisk.com/*

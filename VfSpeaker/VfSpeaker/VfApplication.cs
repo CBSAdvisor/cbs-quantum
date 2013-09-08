@@ -262,6 +262,8 @@ namespace VfSpeaker
 
                 string tempId = webClient.GetTempId();
                 Thread.Sleep(1000);
+                string cardLink = webClient.GetCardLink(tempId, parts[i].Text);
+
                 byte[] previewPage = webClient.PostPreview(tempId, parts[i].Text/*"У Кремля нет повода менять взгляд на отношения с Минском"*/);
 
                 while (true)

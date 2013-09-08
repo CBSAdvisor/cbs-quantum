@@ -17,6 +17,7 @@ namespace VfSpeaker.Services
         private static Uri WEBSITE_URL = new Uri("http://cards.voicefabric.ru");
         private static Uri GET_EDIT_URL = new Uri("/?act=edit&ImageID=99", UriKind.Relative);
         private static Uri POST_PREVIEW_URL = new Uri("/?act=preview", UriKind.Relative);
+        private static Uri POST_CREATE_URL = new Uri("/?act=create", UriKind.Relative);
         private static string GET_SOUND_URL = "/?act=getsound&tempid=";
 
         private VfWebClienBase _webClient = new VfWebClienBase();
@@ -80,6 +81,73 @@ namespace VfSpeaker.Services
             result = tempIdMNode.ElementAt(0).Attributes["value"].Value;
 
             Log4.DeveloperLog.InfoFormat("tempid: {0}", result);
+            return result;
+        }
+
+        public string GetCardLink(string tempId, string text)
+        {
+            string result = string.Empty;
+            Uri url = new Uri(WEBSITE_URL, POST_CREATE_URL);
+
+            _webClient.Referer = Referer;
+            _webClient.CharacterSet = "utf-8";
+            _webClient.Encoding = Encoding.UTF8;
+            _webClient.Headers.Set(HttpRequestHeader.Accept, "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+
+            NameValueCollection postValues = new NameValueCollection();
+            postValues.Add("Text", text);
+            postValues.Add("cardtype", "link");
+            postValues.Add("FromName", "");
+            postValues.Add("FromMail", "");
+            postValues.Add("ToName", "");
+            postValues.Add("ToMail", "");
+            postValues.Add("Voice", "Vladimir");
+            //postValues.Add("Voice", "Alexander");
+            //postValues.Add("Voice", "Anna");
+            //postValues.Add("Voice", "Maria");
+            //postValues.Add("Voice", "Lidia");
+            //postValues.Add("Voice", "Victoria");
+            postValues.Add("MusicID", "0");
+            postValues.Add("ImageID", "99");
+            postValues.Add("Type", "link");
+            postValues.Add("tempid", tempId);
+
+            byte[] buffer = null;
+
+            try
+            {
+                buffer = _webClient.UploadValues(url, "POST", postValues);
+                Log4.DeveloperLog.InfoFormat("Bytes: {0} Url: {1}", buffer.Length, url);
+
+
+            }
+            catch (Exception ex)
+            {
+                Log4.DeveloperLog.ErrorFormat("{0}", ex);
+            }
+
+            Referer = url;
+
+            try 
+            {
+                HtmlDocument doc = new HtmlDocument();
+
+                Encoding docEncoding = _webClient.Encoding;
+                doc.OptionDefaultStreamEncoding = docEncoding;
+
+                doc.LoadHtml(docEncoding.GetString(buffer));
+
+                HtmlNode html = doc.DocumentNode;
+                IEnumerable<HtmlNode> linkMNode = html.CssSelect("input[name=link]");
+                result = linkMNode.ElementAt(0).Attributes["value"].Value;
+
+            }
+            catch(Exception ex)
+            {
+            }
+
+            Log4.DeveloperLog.InfoFormat("tempid: {0}\n Text: {1}\n link: {2}", tempId, text, result);
+
             return result;
         }
 

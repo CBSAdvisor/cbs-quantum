@@ -1,5 +1,45 @@
-"It is treason to support House Targaryen... but I have made your loyalties known. I am toild a Targaryen loyalist will visit soon. We should prepare."
+Gaia Cathrene
+Thore Blutaxt
 
-"What sort of preparation did you have in mind?"
-"A feast in his honor -- a quiet one, of course. And many improvements to your holdings. I have drawn up a list."
-"Prepare as you would for any guest. Undue attention would not help our visitor's cause."
+An Honored Guest
+ - "It is treason to support House Targaryen... but I have made your loyalties known. I am toild a Targaryen loyalist will visit soon. We should prepare."
+
+ - "What sort of preparation did you have in mind?"
+ - "A feast in his honor -- a quiet one, of course. And many improvements to your holdings. I have drawn up a list."
+ - "Prepare as you would for any guest. Undue attention would not help our visitor's cause."
+
+ - "What do you know of this mysterious visitor, maester?"
+ - "It is not Viserys Targaryen, I know that much. He and his sister Daenerys remain out of reach. Perhaps this visitor knows more of them."
+ - "See if you can learn more of this visitor. I want to be prepared when he arrives."
+
+ - "What momentous news. I will make whatever arrangements you deem appropriate, maester."
+ 
+  - Maester Lucas nods. "I will make discreet. In the mean time, I believe Ser Hugo has plans to spruce up your guar..."
+
+A Feast for Dragons
+  - "I cannot stay long. But my lord Viserys is grateful for your support, and promises to remember you when the usurper to gone."
+
+  - "How can I best serve the Targaryens from here?"
+  - "Obey King Robert and keep your true loyalties hidden. When the time is right, the Targariens will call upon you.
+  - "I will be a loyal subject of King Robert, until the dragon returns"
+
+  - "May I ask how House Targaryen fares?"
+  - "Not much of a house anymore. Just Viserys, trying to raise an army to take back Westeros. He hopes to trade his sister for what he needs."
+  - "I am not Viserys' only bannerman. More would swear fealty, if he revealed himself."
+
+  - "I appreciate you coming all this way, Ser Jorah. Please, feast before you go."
+
+  The knight nods. "It is a long journey back to Pentos. But if you have a banner, I will carry it with me, and present it to Viserys."
+  
+Интрига.
+  Шпионаж
+    Один из трех типов специализаций Интриги. Для персонажей, которые поклялись
+	в верности дому Таргариенов, можегут стать особенно хороши в Шпионаже, если 
+	они развили свой талант верности вассалу. Сила шпионажа Ваших Поклявшихся Мечей,
+	выполняющих Действия Шпиона, равняется Spy Stats Вашего Персонажа (включая 
+	Здания и Оборудование) и их собственное обучение и Оборудование. Любые премии
+	проценты (например, от Талантов) для нападений или защиты тогда применены на 
+	полный счет.
+	Шпионаж в PtP Действия шпиона в PtP позволят Вам видеть статистику другого игрока,
+	выполняя действие против них в течение 3 дней.
+

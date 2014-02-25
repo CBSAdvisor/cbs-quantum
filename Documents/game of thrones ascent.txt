@@ -1,9 +1,12 @@
 12:33 21.02.2014
 
+Jack Storm
+Thore Blutaxt
 Peter Ashburn
 Sebastian Stone
+Bodger Lannister
 Gaia Cathrene
-Thore Blutaxt
+Rhaevin Dracrys
 
 An Honored Guest
  - "It is treason to support House Targaryen... but I have made your loyalties known. I am toild a Targaryen loyalist will visit soon. We should prepare."
@@ -47,4 +50,10 @@ A Feast for Dragons
 	Ўпионаж в PtP ƒействи€ шпиона в PtP позвол€т ¬ам видеть статистику другого игрока,
 	выполн€€ действие против них в течение 3 дней.
 
+===============================================================================
 
+Crannogmen Hunters.
+A short stout primitive people under rule of House Reed. Their hunters are used to harsh conditions and sparse prey.
+
+Region - The Neck.
+A narrow stretch of marshland between the North and the rest of Westeros. Only the native crannogmen truly know the terrain and its subtle dangers.

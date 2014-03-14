@@ -1,4 +1,4 @@
-12:33 21.02.2014
+19:11 26.02.2014
 
 Jack Storm
 Thore Blutaxt
@@ -52,8 +52,53 @@ A Feast for Dragons
 
 ===============================================================================
 
-Crannogmen Hunters.
-A short stout primitive people under rule of House Reed. Their hunters are used to harsh conditions and sparse prey.
+Sworn Swords.
+  Sworn Swords are minor characters you can recruit to serve in your House, that
+  can assist you to complete storyline Quests, Adventures, and to engage other
+  Lords and Ladies in Player to Player Actions. Sworn Swords can be grouped together
+  to form an Adventure Party, which allows you to send them quicker to Adventures.
 
-Region - The Neck.
-A narrow stretch of marshland between the North and the rest of Westeros. Only the native crannogmen truly know the terrain and its subtle dangers.
+  The number of Sworn Swords that you can send simultaneously for Adventures and 
+  Player to Player Actions is equivalent to your number of Command Points. 
+  Sworn Swords sent on Quests and Challenges are not limited this way.
+  
+  The very first Sworn Sword whose name starts with Helpful you're forced to buy 
+  in the Prologue starts without any base stats despite being common quality.
+
+  The Legendary Sworn Sword bought with 24 gold comes with 4 open seals and the 
+  Peerless Sworn Sword bought with 35 gold comes with 5 open seals. It would cost 
+  24 gold for getting the 4 seals and 35 for opening 5 seals, so these sworn swords 
+  are essentially free if you plan on buying the seals any ways.
+  
+  Ranks
+    Sworn Swords will gain XP whenever they succeed in Quests, Adventures or Player 
+	to Player Actions. When they reach a certain amount of XP (see the table to the 
+	right), the game will prompt you to train them. Training either gives +2 to a 
+	Stat or +1% to a Substat.
+
+    Also note that there are ranks where the Sworn Sword requires 0 XP to rank up. 
+	For example, once your Sworn Sword reaches 335 XP, he/she will rank up to 8. 
+	But to reach rank 9, he/she will need no more XP just another successful action 
+	to trigger the "train" button again.
+	
+  Specialisations
+    When your Sworn Sword reaches Rank 3, you will be able to select a specialisation 
+	for your Sworn Sword per the standard conflict options.
+
+    Battle Specialisations
+      Vanguard (Fight)
+      Skirmisher (Harass)
+      Protector (Aid)
+    Trade Specialiations
+      Merchant (Barter)
+      Charlatan (Swindle)
+      Corruptor (Bribe)
+    Intrigue Specialisations
+      Agent (Spy)
+      Saboteur (Sabotage)
+      Thief (Steal)
+    If you train your Sworn Sword in their Specialisation, this will increase the 
+	percentage bonus they get, equal to the level of their Specialisation (e.g., if you 
+	train one Specialisation five times, you Sworn Sword will have a +5% bonus bonus to 
+	all actions with the related Substat). This means that you need to have a decent 
+	amount base Battle, Trade and/or Intrigue Stat for percentages to become effective.

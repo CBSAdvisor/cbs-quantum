@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="ApplicationName">com.origon.wikinotes</string>
+  <string name="app_name">Origon Wiki Notes</string>
+  <string name="start_page">Top Note</string>
+  <string name="top_note">
+    "This is the start page for this wiki. Here you can add links to pages that you want to be able to reach easily.
+
+    There's also a page called PageFormatting that demonstrates the wiki markup in action.
+    "
+  </string>
+  <string name="page_formatting_note">
+    "''bold''
+    //italic//
+    __underlined__
+    --strikethrough--
+    >>centered&lt;&lt;
+    *bullet item
+    monospaced (with a space in front)
+    (fs:24)(fs:24) set font size to 24
+    "
+  </string>
+</resources>

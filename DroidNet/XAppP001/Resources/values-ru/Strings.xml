@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="Hello">Привет Мир, Нажми меня!</string>
+  <string name="ApplicationName">XAppP001</string>
+  <string name="DisplayMetricsActivity">Метрика дисплея</string>
+  <string name="CalculatorActivity">Калькулятор</string>
+  <string name="PreferencesActivity">Настройки</string>
+  <string name="ResetMenuItem">Сброс</string>
+  <string name="QuitMenuItem">Выход</string>
+  <!--Preferences screen-->
+  <string name="DefaultCalcNum1Label">Число 1</string>
+  <string name="DefaultCalcNum2Label">Число 2</string>
+  <string name="SaveLabel">Сохранить</string>
+  <string name="CancelLabel">Отмена</string>
+  <!--Density screen-->
+  <string name="DensityLabel">Плотность:</string>
+  <string name="DensityDpiLabel">Плотность Dpi:</string>
+  <string name="ScaledDensityLabel">Мвштабируемая плотность:</string>
+  <string name="HeightPixelsLabel">Ширина в пикселах:</string>
+  <string name="WidthPixelsLabel">Длина в пикселах:</string>
+  <string name="XdpiLabel">X dpi:</string>
+  <string name="YdpiLabel">Y dpi:</string>
+</resources>

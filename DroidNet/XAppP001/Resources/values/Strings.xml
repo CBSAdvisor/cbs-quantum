@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="ApplicationName">XAppP001</string>
+  <string name="DisplayMetricsActivity">Display Metrics</string>
+  <string name="CalculatorActivity">Calculator</string>
+  <string name="PreferencesActivity">Preferences</string>
+  <string name="ResetMenuItem">Reset</string>
+  <string name="QuitMenuItem">Quit</string>
+  <!--Preferences screen-->
+  <string name="DefaultCalcNum1Label">Number 1</string>
+  <string name="DefaultCalcNum2Label">Number 2</string>
+  <string name="SaveLabel">Save</string>
+  <string name="CancelLabel">Cancel</string>
+  <!--Density screen-->
+  <string name="DensityLabel">Density:</string>
+  <string name="DensityDpiLabel">Density Dpi:</string>
+  <string name="ScaledDensityLabel">Scaled Density:</string>
+  <string name="HeightPixelsLabel">Height Pixels:</string>
+  <string name="WidthPixelsLabel">Width Pixels:</string>
+  <string name="XdpiLabel">X dpi:</string>
+  <string name="YdpiLabel">Y dpi:</string>
+</resources>

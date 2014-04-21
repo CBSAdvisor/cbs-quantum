@@ -34,8 +34,8 @@ namespace com.origon.wikinotes.db
             public const string MODIFIED_DATE = "modified";
 
             // MIME types used for getting a list, or a single vegetable
-            public static readonly string NOTES_MIME_TYPE = ContentResolver.CursorDirBaseType + "/vnd.com.origon.wikinotes.db.Notes";
-            public static readonly string NOTE_MIME_TYPE = ContentResolver.CursorItemBaseType + "/vnd.com.origon.wikinotes.db.Notes";
+            public const string NOTES_MIME_TYPE = ContentResolver.CursorDirBaseType + "/vnd.com.origon.wikinotes.db.Notes";
+            public const string NOTE_MIME_TYPE = ContentResolver.CursorItemBaseType + "/vnd.com.origon.wikinotes.db.Notes";
 
             public static AndroidUri ALL_NOTES_URI = AndroidUri.Parse(WIKINOTES_CONTENT_URI.ToString());
             public const string BY_TITLE_SORT_ORDER = "title ASC";

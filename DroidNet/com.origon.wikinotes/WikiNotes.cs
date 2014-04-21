@@ -20,10 +20,23 @@ namespace com.origon.wikinotes
     {
         private static string KEY_URL = "wikiNotesURL";
 
+        #region Menu Item ids
+        public const int EDIT_ID = Menu.First;
+        public const int HOME_ID = Menu.First + 1;
+        public const int LIST_ID = Menu.First + 3;
+        public const int DELETE_ID = Menu.First + 4;
+        public const int ABOUT_ID = Menu.First + 5;
+        public const int EXPORT_ID = Menu.First + 6;
+        public const int IMPORT_ID = Menu.First + 7;
+        public const int EMAIL_ID = Menu.First + 8;
+        #endregion
+
         private TextView _noteView;
         private ICursor _cursor;
         private AndroidUri _uri;
         private static Java.Util.Regex.Pattern WIKI_WORD_MATCHER;
+        private WikiActivityHelper _helper;
+        private string _noteName;
 
         static WikiNotes()
         {
@@ -37,7 +50,7 @@ namespace com.origon.wikinotes
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.Main);
-            
+
             this._noteView = FindViewById<TextView>(Resource.Id.noteview);
             AndroidUri localUri = Intent.Data;
 
@@ -77,7 +90,7 @@ namespace com.origon.wikinotes
                     }
                     newNote = true;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Log.Error(WikiNote.LOG_TAG, ex.Message);
                 }
@@ -86,7 +99,24 @@ namespace com.origon.wikinotes
             _uri = localUri;
             _cursor = localCursor;
             localCursor.MoveToFirst();
-            //mHelper = new WikiActivityHelper(this);
+            _helper = new WikiActivityHelper(this);
+
+            // get the note name
+            String noteName = _cursor.GetString(_cursor
+                .GetColumnIndexOrThrow(WikiNote.Notes.TITLE));
+            _noteName = noteName;
+
+            // set the title to the name of the page
+            Title = Resources.GetString(Resource.String.wiki_title, noteName);
+
+            // If a new note was created, jump straight into editing it
+            if (newNote)
+            {
+                _helper.EditNote(noteName, null);
+            }
+
+            // Set the menu shortcut keys to be default keys for the activity as well
+            SetDefaultKeyMode(DefaultKey.Shortcut);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
@@ -113,6 +143,63 @@ namespace com.origon.wikinotes
             ShowWikiNote(c.GetString(c.GetColumnIndexOrThrow(WikiNote.Notes.BODY)));
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            base.OnCreateOptionsMenu(menu);
+
+            menu.Add(0, EDIT_ID, 0, Resource.String.menu_edit)
+                .SetShortcut('1', 'e')
+                .SetIcon(Resource.Drawable.icon_delete);
+            //menu.add(0, HOME_ID, 0, R.string.menu_start).setShortcut('4', 'h')
+            //    .setIcon(R.drawable.icon_start);
+            //menu.add(0, LIST_ID, 0, R.string.menu_recent).setShortcut('3', 'r')
+            //    .setIcon(R.drawable.icon_recent);
+            //menu.add(0, DELETE_ID, 0, R.string.menu_delete).setShortcut('2', 'd')
+            //    .setIcon(R.drawable.icon_delete);
+            //menu.add(0, ABOUT_ID, 0, R.string.menu_about).setShortcut('5', 'a')
+            //    .setIcon(android.R.drawable.ic_dialog_info);
+            //menu.add(0, EXPORT_ID, 0, R.string.menu_export).setShortcut('7', 'x')
+            //    .setIcon(android.R.drawable.ic_dialog_info);
+            //menu.add(0, IMPORT_ID, 0, R.string.menu_import).setShortcut('8', 'm')
+            //    .setIcon(android.R.drawable.ic_dialog_info);	
+            //menu.add(0, EMAIL_ID, 0, R.string.menu_email).setShortcut('6', 'm')
+            //    .setIcon(android.R.drawable.ic_dialog_info);
+            return true;
+        }
+
+        public override bool OnMenuItemSelected(int featureId, IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case EDIT_ID:
+                    _helper.EditNote(_noteName, _cursor);
+                    return true;
+                case HOME_ID:
+                    //mHelper.goHome();
+                    return true;
+                case DELETE_ID:
+                    //mHelper.deleteNote(mCursor);
+                    return true;
+                case LIST_ID:
+                    //mHelper.listNotes();
+                    return true;
+                case WikiNotes.ABOUT_ID:
+                    //Eula.showEula(this);
+                    return true;
+                case WikiNotes.EXPORT_ID:
+                    //mHelper.exportNotes();
+                    return true;
+                case WikiNotes.IMPORT_ID:
+                    //mHelper.importNotes();
+                    return true;
+                case WikiNotes.EMAIL_ID:
+                    //mHelper.mailNote(mCursor);
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
         /// <summary>
         /// If the note was edited and not canceled, commit the update to the
         /// database and then refresh the current view of the linkified note.
@@ -120,9 +207,17 @@ namespace com.origon.wikinotes
         /// <param name="requestCode"></param>
         /// <param name="resultCode"></param>
         /// <param name="result"></param>
-        protected override void OnActivityResult(int requestCode, Result resultCode,  Intent result)
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent result)
         {
             base.OnActivityResult(requestCode, resultCode, result);
+            if ((requestCode == WikiActivityHelper.ACTIVITY_EDIT) &&
+                (resultCode == Result.Ok))
+            {
+                // edit was confirmed - store the update
+                ICursor c = _cursor;
+                c.Requery();
+                c.MoveToFirst();
+            }
         }
 
 

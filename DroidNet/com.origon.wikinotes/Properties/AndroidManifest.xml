@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.origon.wikinotes" android:installLocation="auto" android:versionCode="1" android:versionName="v1.1">
 	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="16" />
-	<application android:label="Origon WikiNotes" android:icon="@drawable/Icon">
-	</application>
+	<application android:label="Origon WikiNotes" android:icon="@drawable/Icon"></application>
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.PERSISTENT_ACTIVITY" />
+	<uses-permission android:name="android.permission.READ_INPUT_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

@@ -42,7 +42,7 @@ namespace com.origon.wikinotes.db
             localContentValues.Put(WikiNote.Notes.MODIFIED_DATE, localLong);
 
             paramSQLiteDatabase.Insert(WikiNote.Notes.TABLE_WIKINOTES, "huh?", localContentValues);
-
+            
             localContentValues.Put(WikiNote.Notes.TITLE, "PageFormatting");
             localContentValues.Put(WikiNote.Notes.BODY, this._context.Resources.GetString(Resource.String.page_formatting_note));
             localContentValues.Put(WikiNote.Notes.CREATED_DATE, localLong);

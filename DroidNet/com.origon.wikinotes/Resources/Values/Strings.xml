@@ -8,6 +8,10 @@
   <string name="start_page">Top Note</string>
   <string name="confirm_button">Confirm</string>
   <string name="cancel_button">Cancel</string>
+  <string name="delete_title">Delete Note?</string>
+  <string name="delete_message">Really delete this page? All information will be lost!</string>
+  <string name="yes_button">Yes</string>
+  <string name="no_button">No</string>
   <string name="menu_edit">Edit Note</string>
   <string name="menu_start">Go To Start Note</string>
   <string name="menu_recent">List All Notes</string>

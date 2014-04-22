@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Uri = Android.Net.Uri;
 
 namespace com.origon.wikinotes
 {
@@ -57,6 +58,22 @@ namespace com.origon.wikinotes
             }
             i.PutExtra(WikiNote.Notes.BODY, body);
             _context.StartActivityForResult(i, ACTIVITY_EDIT);
+        }
+
+        public void DeleteNote(ICursor cursor)
+        {
+            new AlertDialog.Builder(_context)
+                .SetTitle(_context.Resources.GetString(Resource.String.delete_title))
+                .SetMessage(Resource.String.delete_message)
+                .SetPositiveButton(Resource.String.yes_button, (object sender, DialogClickEventArgs e) =>
+                {
+                    Uri noteUri = ContentUris.WithAppendedId(WikiNote.Notes.ALL_NOTES_URI,
+                        cursor.GetInt(0));
+                    _context.ContentResolver.Delete(noteUri, null, null);
+                    _context.SetResult(Result.Ok);
+                    _context.Finish();
+                })
+                .SetNegativeButton(Resource.String.no_button, delegate { }).Show();
         }
     }
 }

@@ -66,8 +66,9 @@ namespace com.origon.wikinotes
                 .SetShortcut('3', 'r')
                 .SetIcon(Resource.Drawable.icon_recent);
 
-            //menu.add(0, DELETE_ID, 0, R.string.menu_delete).setShortcut('2', 'd')
-            //    .setIcon(R.drawable.icon_delete);
+            menu.Add(0, DELETE_ID, 0, Resource.String.menu_delete)
+                .SetShortcut('2', 'd')
+                .SetIcon(Resource.Drawable.icon_delete);
             //menu.add(0, ABOUT_ID, 0, R.string.menu_about).setShortcut('5', 'a')
             //    .setIcon(android.R.drawable.ic_dialog_info);
             //menu.add(0, EXPORT_ID, 0, R.string.menu_export).setShortcut('7', 'x')
@@ -89,7 +90,7 @@ namespace com.origon.wikinotes
                     //mHelper.goHome();
                     return true;
                 case DELETE_ID:
-                    //mHelper.deleteNote(mCursor);
+                    _helper.DeleteNote(_cursor);
                     return true;
                 case LIST_ID:
                     _helper.ListNotes();

@@ -20,7 +20,7 @@ namespace com.origon.wikinotes
         DataMimeType = WikiNote.Notes.NOTE_MIME_TYPE)]
     public class WikiNoteEditor : Activity
     {
-        protected static string ACTIVITY_RESULT = "com.origon.wikinotes.EDIT";
+        public const string ACTIVITY_RESULT = "com.origon.wikinotes.EDIT";
         private EditText _noteEdit;
         private string _wikiNoteTitle;
 

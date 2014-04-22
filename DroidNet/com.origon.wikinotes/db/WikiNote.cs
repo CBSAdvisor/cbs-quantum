@@ -20,6 +20,7 @@ namespace com.origon.wikinotes.db
 
         public static string[] WIKI_EXPORT_PROJECTION = { "title", "body", "created", "modified" };
         public static string[] WIKI_NOTES_PROJECTION = { "_id", "title", "body", "modified" };
+        public static string[] WIKI_LISTNOTES_PROJECTION = { "_id", "title", "modified" };
         public static string LOG_TAG = "WikiNotes";
 
         public class Notes

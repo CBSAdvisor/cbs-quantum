@@ -23,10 +23,21 @@ namespace com.origon.wikinotes
             _context = context;
         }
 
-        /**
-         * Create an intent to start the WikiNoteEditor using the current title
-         * and body information (if any).
-         */
+
+        /// <summary>
+        /// If a list of notes is requested, fire the WikiNotes list Content URI
+        /// and let the WikiNotesList activity handle it.
+        /// </summary>
+        public void ListNotes()
+        {
+            Intent i = new Intent(Intent.ActionView, WikiNote.Notes.ALL_NOTES_URI);
+            _context.StartActivity(i);
+        }
+
+        /// <summary>
+        /// Create an intent to start the WikiNoteEditor using the current title
+        /// and body information (if any).
+        /// </summary>
         public void EditNote(string mNoteName, ICursor cursor)
         {
             // This intent could use the android.intent.action.EDIT for a wiki note
